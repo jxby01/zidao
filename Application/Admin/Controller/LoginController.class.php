@@ -2,37 +2,47 @@
 namespace Admin\Controller;
 use Think\Controller;
 class LoginController extends CommonController {
-    public function login(){
-		$verify = new \Think\Verify();
-		if(!empty($_POST)){
-			//print_r($_POST);exit;
-			$admin = M('admin');
-			$username = $_POST['username'];
-			$password = sha1($_POST['password']);
-			$code = $_POST['yanzhengma'];
-			$ruselt = $admin->where(array('username'=>$username,'password'=>$password))->find();
-				if(!empty($ruselt)){
-					if(!empty($_POST['yanzhengma'])){
-						if($verify->check($code)){
-							$_SESSION['name'] = $username;
-							$this->success('登录成功',U('Common/welcome'),3);
-						}else{
-							$this->error('验证码错误',U('Login/login'),3);
-						}
-					}
-			}else{
-				$this->error('账户或密码错误',U('Login/login'),3);
-			}
-		}else{	
-			
+    public function login(){//加载页面
 		$this->display('login/login');
-		
-		}
-    }
+  }
+  
+  public function logout(){//退出登录
+		unset($_SESSION['name']);
+		$this->redirect('Login/login',array(),2,'<meta charset="utf-8"/>安全退出中...');
+	}
 	
-	public function verify(){//验证码
+	public function check_code(){//检验验证码
+		if(!empty($_POST)){
+			$verify = new \Think\Verify();
+			$code = $_POST['code'];
+			$cs = $verify->check($code);
+			if($cs == 1){
+				echo 1;
+			}else{
+				echo 0;
+			}
+		}
+	}
+	
+	public function check_passw(){//检验登录是否正确
+		if(!empty($_POST)){
+			$adminname = $_POST['name'];
+			$password = sha1($_POST['password']);
+			$admin = M('admin');
+			$ruselt = $admin->where(['admin_name'=>$adminname,'admin_password'=>$password])->find();
+			if(!empty($ruselt)){
+				$_SESSION['admin_name'] = $adminname;
+				echo 1;//检验成功
+			}else{
+				echo 0;//未检验到数据库结果
+			}
+			
+		}
+	}
+	
+	public function verify(){//生成验证码
 		$Verify =     new \Think\Verify();
-		$Verify->fontSize = 30;
+		$Verify->fontSize = 18;
 		$Verify->length   = 4;
 		$Verify->useNoise = false;
 		$Verify->entry();

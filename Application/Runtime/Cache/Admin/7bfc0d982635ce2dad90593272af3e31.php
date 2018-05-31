@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>后台模板</title>
-		<link rel="stylesheet" href="__PUBLIC__/Admin/assetsl/css/amazeui.css" />
-		<link rel="stylesheet" href="__PUBLIC__/Admin/assetsl/css/core.css" />
-		<link rel="stylesheet" href="__PUBLIC__/Admin/assetsl/css/menu.css" />
-		<link rel="stylesheet" href="__PUBLIC__/Admin/assetsl/css/index.css" />
-		<link rel="stylesheet" href="__PUBLIC__/Admin/assetsl/css/admin.css" />
-		<link rel="stylesheet" href="__PUBLIC__/Admin/assetsl/css/page/typography.css" />
-		<link rel="stylesheet" href="__PUBLIC__/Admin/assetsl/css/page/form.css" />
-		<link rel="stylesheet" href="__PUBLIC__/Admin/assetsl/css/component.css" />
+		<link rel="stylesheet" href="/zidao/Public/Admin/assetsl/css/amazeui.css" />
+		<link rel="stylesheet" href="/zidao/Public/Admin/assetsl/css/core.css" />
+		<link rel="stylesheet" href="/zidao/Public/Admin/assetsl/css/menu.css" />
+		<link rel="stylesheet" href="/zidao/Public/Admin/assetsl/css/index.css" />
+		<link rel="stylesheet" href="/zidao/Public/Admin/assetsl/css/admin.css" />
+		<link rel="stylesheet" href="/zidao/Public/Admin/assetsl/css/page/typography.css" />
+		<link rel="stylesheet" href="/zidao/Public/Admin/assetsl/css/page/form.css" />
+		<link rel="stylesheet" href="/zidao/Public/Admin/assetsl/css/component.css" />
 	</head>
 	<body>
 		<!-- Begin page -->
@@ -31,7 +31,7 @@
 					<li class="hidden-xs am-hide-sm-only">
                         <form role="search" class="app-search">
                             <input type="text" placeholder="Search..." class="form-control">
-                            <a href=""><img src="__PUBLIC__/Admin/assetsl/img/search.png"></a>
+                            <a href=""><img src="/zidao/Public/Admin/assetsl/img/search.png"></a>
                         </form>
                     </li>
 				</ul>
@@ -52,7 +52,7 @@
 				    	<!-- User -->
 						<div class="user-box am-hide-sm-only">
 	                        <div class="user-img">
-	                            <img src="__PUBLIC__/Admin/assetsl/img/avatar-1.jpg" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
+	                            <img src="/zidao/Public/Admin/assetsl/img/avatar-1.jpg" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
 	                            <div class="user-status offline"><i class="am-icon-dot-circle-o" aria-hidden="true"></i></div>
 	                        </div>
 	                        <h5><a href="#">Mat Helme</a> </h5>
@@ -105,5 +105,3 @@
 			</div>
 		</div>-->
 		<!-- ========== Left Sidebar end ========== -->
-		
-		

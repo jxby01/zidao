@@ -22,11 +22,11 @@ class Verify {
         'fontSize'  =>  25,              // 验证码字体大小(px)
         'useCurve'  =>  true,            // 是否画混淆曲线
         'useNoise'  =>  true,            // 是否添加杂点	
-        'imageH'    =>  0,               // 验证码图片高度
+        'imageH'    =>  36,               // 验证码图片高度
         'imageW'    =>  0,               // 验证码图片宽度
         'length'    =>  5,               // 验证码位数
         'fontttf'   =>  '',              // 验证码字体，不设置随机获取
-        'bg'        =>  array(243, 251, 254),  // 背景颜色
+        'bg'        =>  array(247, 247, 248),  // 背景颜色
         'reset'     =>  true,           // 验证成功后是否重置
         );
 
