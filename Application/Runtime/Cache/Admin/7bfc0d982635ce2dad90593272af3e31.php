@@ -17,13 +17,13 @@
 		<!-- Begin page -->
 		<header class="am-topbar am-topbar-fixed-top">		
 			<div class="am-topbar-left am-hide-sm-only">
-                <a href="index.html" class="logo"><span>Admin<span>to</span></span><i class="zmdi zmdi-layers"></i></a>
+                <a href="index.html" class="logo"><span>Youzi<span>Dao</span></span><i class="zmdi zmdi-layers"></i></a>
             </div>
 	
 			<div class="contain">
 				<ul class="am-nav am-navbar-nav am-navbar-left">
 
-					<li><h4 class="page-title">基本表格</h4></li>
+					<li><h4 class="page-title">数据浏览</h4></li>
 				</ul>
 				
 				<ul class="am-nav am-navbar-nav am-navbar-right">
@@ -52,10 +52,10 @@
 				    	<!-- User -->
 						<div class="user-box am-hide-sm-only">
 	                        <div class="user-img">
-	                            <img src="/zidao/Public/Admin/assetsl/img/avatar-1.jpg" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
+	                            <img src="/zidao/Public/Admin/assetsl/img/avatar-1.jpg" alt="user-img" title="你好啊☺" class="img-circle img-thumbnail img-responsive">
 	                            <div class="user-status offline"><i class="am-icon-dot-circle-o" aria-hidden="true"></i></div>
 	                        </div>
-	                        <h5><a href="#">Mat Helme</a> </h5>
+	                        <h5><a href="<?php echo U('Admin/Login/logout');?>">退出登录</a> </h5>
 	                        <ul class="list-inline">
 	                            <li>
 	                                <a href="#">

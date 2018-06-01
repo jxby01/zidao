@@ -1,7 +1,7 @@
 <?php
 namespace Admin\Controller;
 use Think\Controller;
-class LoginController extends CommonController {
+class LoginController extends Controller {
     public function login(){//加载页面
 		$this->display('login/login');
   }
@@ -48,10 +48,7 @@ class LoginController extends CommonController {
 		$Verify->entry();
 		
 	}
-	public function logout(){
-		unset($_SESSION['name']);
-		$this->redirect('Login/login',array(),2,'<meta charset="utf-8"/>安全退出中...');
-	}
+	
 	public function checkname(){//是否重名
 		$username = $_POST['username'];
 		$sql = M('admin')->where(array('username'=>$username))->select();

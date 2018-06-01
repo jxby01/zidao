@@ -8,7 +8,7 @@ class CommonController extends Controller{
 	}
 	
 	public function CheckLogin(){
-		if(empty($_SESSION['name'])){
+		if(empty($_SESSION['admin_name'])){
 			$this->error('未登录',U('Admin/Login/login'),2);
 		}
 	}
