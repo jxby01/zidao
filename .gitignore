@@ -1,0 +1,6 @@
+
+*.html
+Application/Runtime/Logs/index.html
+Application/Runtime/Logs/Home/18_05_31.log
+*.html
+*.log
