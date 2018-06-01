@@ -81,6 +81,13 @@
 						        <li><a href="html/table_complete.html">完整表格</a></li>
 						      </ul>
 						    </li>
+							 <li class="admin-parent">
+						      <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-table"></span> 权限 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+						      <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav4">
+						        <li><a href="<?php echo U('Admin/Power/power_list');?>" class="am-cf">权限列表</span></a></li>
+						        <li><a href="html/table_complete.html">完整表格</a></li>
+						      </ul>
+						    </li>
 						    <li class="admin-parent">
 						      <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><i class="am-icon-line-chart" aria-hidden="true"></i> 统计图表 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
 						      <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav2">
