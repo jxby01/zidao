@@ -32,6 +32,7 @@ class LoginController extends Controller {
 			$ruselt = $admin->where(['admin_name'=>$adminname,'admin_password'=>$password])->find();
 			if(!empty($ruselt)){
 				$_SESSION['admin_name'] = $adminname;
+				$_SESSION['admin_id'] = $ruselt['admin_id'];
 				echo 1;//检验成功
 			}else{
 				echo 0;//未检验到数据库结果

@@ -1,4 +1,4 @@
-<!--	<div class="am-g">-->
+<?php if (!defined('THINK_PATH')) exit();?><!--	<div class="am-g">-->
 <!-- ============================================================== -->
 <!-- Start right Content here -->
 <div class="content-page">
@@ -38,20 +38,19 @@
                             <tr>
                                 <th class="table-check"><input type="checkbox" /></th>
 								<th class="table-id">ID</th>
-								<th class="table-title">权限名称</th>
-								<th class="table-type">分布情况</th>
+								<th class="table-title">管理员账号</th>
+								<th class="table-type">权限</th>
 								<th class="table-date am-hide-sm-only">修改日期</th>
 								<th class="table-set">操作</th>
                             </tr>
                             </thead>
                             <tbody>
-							<foreach name="row" item="vo">
-                            <tr>
+							<?php if(is_array($row)): foreach($row as $key=>$vo): ?><tr>
                                 <td><input type="checkbox" /></td>
-                                <td>{$vo.id}</td>
-                                <td><a href="javascript:;">{$vo.name}</a></td>
-                                <td>{$vo.leavls}</td>
-                                <td class="am-hide-sm-only"><?php echo date('Y年m月d日 H:i',$vo['cre_time']);?></td>
+                                <td><?php echo ($vo["admin_id"]); ?></td>
+                                <td><a href="javascript:;"><?php echo ($vo["admin_name"]); ?></a></td>
+                                <td><?php echo ($vo["name"]); ?></td>
+                                <td class="am-hide-sm-only"><?php echo date('Y年m月d日 H:i',$vo['create_time']);?></td>
                                 <td>
                                     <div class="am-btn-toolbar">
                                         <div class="am-btn-group am-btn-group-xs">
@@ -60,14 +59,13 @@
                                         </div>
                                     </div>
                                 </td>
-                            </tr>
-							</foreach>
+                            </tr><?php endforeach; endif; ?>
                             </tbody>
                         </table>
                         <div class="am-cf">
-                            共 {$count} 条记录
+                            共 <?php echo ($count); ?> 条记录
                             <div class="am-fr">
-                                {$page}
+                                <?php echo ($page); ?>
                             </div>
                         </div>
                         <hr />
@@ -80,11 +78,11 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="__PUBLIC__/Admin/assetsl/js/jquery-2.1.0.js" ></script>
+<script type="text/javascript" src="/zidao/Public/Admin/assetsl/js/jquery-2.1.0.js" ></script>
 <script>
 $(function(){
 	$("#add").click(function(){
-		window.location.href="{:U('Admin/Power/power_add')}";
+		window.location.href="<?php echo U('Admin/Power/admin_add');?>";
 	})
 })
 </script>

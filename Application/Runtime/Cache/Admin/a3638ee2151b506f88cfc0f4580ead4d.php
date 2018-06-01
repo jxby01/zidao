@@ -1,4 +1,4 @@
-<!--	<div class="am-g">-->
+<?php if (!defined('THINK_PATH')) exit();?><!--	<div class="am-g">-->
 		<!-- ============================================================== -->
 		<!-- Start right Content here -->
 		<div class="content-page">
@@ -13,7 +13,7 @@
 								    <legend>添加管理员</legend>
 								    <div class="am-form-group">
 								      <label for="doc-vld-name-2">管理员账号：</label>
-								      <input type="text" id="doc-vld-name-2"  placeholder="输入户名" required/>
+								      <input type="text" id="doc-vld-name-2" minlength="3" placeholder="输入户名" required/>
 								    </div>
 								    <div class="am-form-group">
 								      <label for="doc-select-1">下拉单选框</label>

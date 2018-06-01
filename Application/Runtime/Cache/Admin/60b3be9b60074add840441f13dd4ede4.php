@@ -1,4 +1,4 @@
-<!--	<div class="am-g">-->
+<?php if (!defined('THINK_PATH')) exit();?><!--	<div class="am-g">-->
 		<!-- ============================================================== -->
 		<!-- Start right Content here -->
 		<div class="content-page">
