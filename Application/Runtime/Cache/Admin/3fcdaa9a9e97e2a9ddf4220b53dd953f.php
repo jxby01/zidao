@@ -2,16 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>登录</title>
-<link href="/zidao/Public/Admin/Wopop_files/style_log.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="/zidao/Public/Admin/Wopop_files/style.css">
-<link rel="stylesheet" type="text/css" href="/zidao/Public/Admin/Wopop_files/userpanel.css">
-<link rel="stylesheet" type="text/css" href="/zidao/Public/Admin/Wopop_files/jquery.ui.all.css">
+<link href="/Public/Admin/Wopop_files/style_log.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/Public/Admin/Wopop_files/style.css">
+<link rel="stylesheet" type="text/css" href="/Public/Admin/Wopop_files/userpanel.css">
+<link rel="stylesheet" type="text/css" href="/Public/Admin/Wopop_files/jquery.ui.all.css">
 
 </head>
 
 <body class="login" mycollectionplug="bind">
 <div class="login_m">
-<div class="login_logo"><img src="/zidao/Public/Admin/Wopop_files/logo.png" width="196" height="46"></div>
+<div class="login_logo"><img src="/Public/Admin/Wopop_files/logo.png" width="196" height="46"></div>
 <div class="login_boder">
 
 <div class="login_padding" id="login_model" style="margin-top:40px;">
@@ -71,7 +71,7 @@
 </div><!--login_m end-->
  <br> <br>
 </body></html>
-<script src="/zidao/Public/Admin/assetsl/js/jquery-2.1.0.js"></script>
+<script src="/Public/Admin/assetsl/js/jquery-2.1.0.js"></script>
 <script>
 $(function(){
 	$("#button").click(function(){
