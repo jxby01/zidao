@@ -12,6 +12,16 @@
 		<link rel="stylesheet" href="__PUBLIC__/Admin/assetsl/css/page/typography.css" />
 		<link rel="stylesheet" href="__PUBLIC__/Admin/assetsl/css/page/form.css" />
 		<link rel="stylesheet" href="__PUBLIC__/Admin/assetsl/css/component.css" />
+		<script type="text/javascript" charset="utf-8">
+	   // 定义一个函数用以显示当前时间
+	   function displayTime() {
+	    var elt = document.getElementById("clock"); // 通过id= "clock"找到元素
+	    var now = new Date(); // 得到当前时间
+	    elt.innerHTML = now.toLocaleTimeString(); //让elt来显示它
+	    setTimeout(displayTime,1000); //在1秒后再次执行
+	   }
+	   window.onload = displayTime; //当onload事件发生时开始显示时间
+	 </script>
 	</head>
 	<body>
 		<!-- Begin page -->
@@ -22,8 +32,7 @@
 	
 			<div class="contain">
 				<ul class="am-nav am-navbar-nav am-navbar-left">
-
-					<li><h4 class="page-title">数据浏览</h4></li>
+					<span id="clock" class="page-title"></span>
 				</ul>
 				
 				<ul class="am-nav am-navbar-nav am-navbar-right">
@@ -38,7 +47,6 @@
 			</div>
 		</header>
 		<!-- end page -->
-		
 		
 		<div class="admin">
 			<!--<div class="am-g">-->
@@ -76,21 +84,28 @@
 						    <li><a href="index.html"><span class="am-icon-home"></span> 首页</a></li>
 						    <li class="admin-parent">
 						      <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-table"></span> 表格 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-						      <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav1">
+						      <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav1">
 						        <li><a href="html/table_basic.html" class="am-cf"> 基本表格</span></a></li>
 						        <li><a href="html/table_complete.html">完整表格</a></li>
 						      </ul>
 						    </li>
+						    <li class="admin-parent">
+						      <a class="am-cf" data-am-collapse="{target: '#collapse-nav6'}"><span class="am-icon-file-video-o"></span> 视频 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+						      <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav6">
+						        <li><a href="{:U('Admin/video/video')}" class="am-cf">视频列表</span></a></li>
+						        <li><a href="{:U('Admin/video/video_fenl')}">视频分类列表</a></li>
+						      </ul>
+						    </li>
 							 <li class="admin-parent">
-						      <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-table"></span> 权限 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-						      <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav4">
+						      <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-power-off"></span> 权限 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+						      <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav4">
 						        <li><a href="{:U('Admin/Power/power_list')}" class="am-cf">权限列表</span></a></li>
 						        <li><a href="{:U('Admin/Power/admin_list')}">管理员列表</a></li>
 						      </ul>
 						    </li>
 						    <li class="admin-parent">
 						      <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><i class="am-icon-line-chart" aria-hidden="true"></i> 统计图表 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-						      <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav2">
+						      <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
 						        <li><a href="html/chart_line.html" class="am-cf"> 折线图</span></a></li>
 						        <li><a href="html/chart_columnar.html" class="am-cf"> 柱状图</span></a></li>
 						        <li><a href="html/chart_pie.html" class="am-cf"> 饼状图</span></a></li>
@@ -98,7 +113,7 @@
 						    </li>
 						    <li class="admin-parent">
 						      <a class="am-cf" data-am-collapse="{target: '#collapse-nav5'}"><span class="am-icon-file"></span> 表单 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-						      <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav5">
+						      <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav5">
 						        <li><a href="html/form_basic.html" class="am-cf"> 基本表单</a></li>
 						        <li><a href="html/form_validate.html">表单验证</a></li>   
 						      </ul>
