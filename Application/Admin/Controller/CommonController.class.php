@@ -33,7 +33,7 @@ class CommonController extends Controller{
 	function upload($path, $file_path, $file_name){
 		// $file=$_FILES['file'];
 		// $name=$file['name'];
-		$type = strtolower(substr($name,strrpos($name,'.')+1)); //得到文件类型，并且都转化成小写
+		$type = strtolower(substr($file_name,strrpos($file_name,'.')+1)); //得到文件类型，并且都转化成小写
 		$allow_type = array('jpg','jpeg','gif','png'); 
 		//判断文件类型是否被允许上传
 		if(!in_array($type, $allow_type)){
@@ -48,7 +48,7 @@ class CommonController extends Controller{
 			// $file_path='./Public/upload/user/'.$fl.'/'.time().'.'.$type;
 			//保存图片
 			move_uploaded_file($path,$file_path);
-			return $file_path;//返回保存路径
+			// return $file_path;//返回保存路径
 			return 'success';//返回成功(二选一)
 		}
 	}
