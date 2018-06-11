@@ -35,7 +35,22 @@ class PowerController extends CommonController{
 	}
 	
 	public function admin_add(){
-		$this->view('power/admin_add');
+		if(!empty($_POST)){
+			if($_POST['powers'] == 0){
+				echo 0;exit;
+			}else{
+				$data['admin_name']=$_POST['admin_name'];
+				$data['level_id']=$_POST['powers'];
+				$data['create_time']=time();
+				if(M('admin')->add($data)){
+					echo 1;
+				}
+			}
+		}else{
+			$powers = M("leavl")->select();
+			$this->assign('powers',$powers);
+			$this->view('power/admin_add');
+		}
 	}
 }
 
