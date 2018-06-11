@@ -23,5 +23,34 @@ class CommonController extends Controller{
 		$this->display($view);
 		$this->display('public/footer');
 	}
+	/**
+	 * 方法名：图片上传
+	 * 	 流程：
+	 * 	 		1、接收文件上传临时路径、保存到文件路径、文件名
+	 * 	 		2、匹配上传格式，判断是否是允许上传文件格式类似
+	 * 	 		3、处理文件，保存到指定文件夹
+	 */
+	function upload($path, $file_path, $file_name){
+		// $file=$_FILES['file'];
+		// $name=$file['name'];
+		$type = strtolower(substr($name,strrpos($name,'.')+1)); //得到文件类型，并且都转化成小写
+		$allow_type = array('jpg','jpeg','gif','png'); 
+		//判断文件类型是否被允许上传
+		if(!in_array($type, $allow_type)){
+		//如果不被允许，则直接停止程序运行
+			return -1;//返回失败码
+		}else{
+			//创建添加的文件夹和权限
+			// $fl=date("Ymd",time());
+			// mkdir('./Public/upload/user/'.$fl);
+			// chmod('./Public/upload/user/'.$fl,0777);
+			//创建的文件夹路径
+			// $file_path='./Public/upload/user/'.$fl.'/'.time().'.'.$type;
+			//保存图片
+			move_uploaded_file($path,$file_path);
+			return $file_path;//返回保存路径
+			return 'success';//返回成功(二选一)
+		}
+	}
 }
 ?>
