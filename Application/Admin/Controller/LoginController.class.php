@@ -33,6 +33,8 @@ class LoginController extends Controller {
 			if(!empty($ruselt)){
 				$_SESSION['admin_name'] = $adminname;
 				$_SESSION['admin_id'] = $ruselt['admin_id'];
+				$level = M('leavl')->where(array('id'=>$ruselt['level_id']))->find();
+				$_SESSION['leavls'] = $level['leavls'];
 				echo 1;//检验成功
 			}else{
 				echo 0;//未检验到数据库结果

@@ -13,27 +13,23 @@
 								    <legend>添加权限信息</legend>
 								    <div class="am-form-group">
 								      <label for="doc-vld-name-2">权限名称：</label>
-								      <input type="text" id="doc-vld-name-2" minlength="3" placeholder="输入权限名称" required/>
+								      <input type="text" id="doc-vld-name-2" name="name"  minlength="3" placeholder="输入权限名称" required/>
 								    </div>
 								    <div class="am-form-group">
-								      <label class="am-form-label">爱好：</label>
+								      <label class="am-form-label">权限：</label><br />
+									  <?php foreach($menu->module as $t):?>
+									   <label class="am-checkbox-inline">
+								        <input type="checkbox" id="leavls" value="<?php echo $t->name->attributes()->id;?>" name="level" minchecked="1"  required> <strong><?php echo $t->name;?></strong><br />
+								      </label><br />
+									  <?php foreach($t->controller as $k):?>
 								      <label class="am-checkbox-inline">
-								        <input type="checkbox" value="橘子" name="docVlCb" minchecked="2" maxchecked="4" required> 橘子
+								        <input type="checkbox" id="leavls" value="<?php echo $k->name->attributes()->id;?>" name="level" required><?php echo $k->name;?>
 								      </label>
-								      <label class="am-checkbox-inline">
-								        <input type="checkbox" value="苹果" name="docVlCb"> 苹果
-								      </label>
-								      <label class="am-checkbox-inline">
-								        <input type="checkbox" value="菠萝" name="docVlCb"> 菠萝
-								      </label>
-								      <label class="am-checkbox-inline">
-								        <input type="checkbox" value="芒果" name="docVlCb"> 芒果
-								      </label>
-								      <label class="am-checkbox-inline">
-								        <input type="checkbox" value="香蕉" name="docVlCb"> 香蕉
-								      </label>
+									  <?php endforeach;?>
+										<br />
+									  <?php endforeach;?>
 								    </div>
-								    <button class="am-btn am-btn-secondary" id="submit" type="submit">提交</button>
+								    <button class="am-btn am-btn-secondary" id="submit">提交</button>
 								  </fieldset>
 								</form>
 							</div>
@@ -49,13 +45,35 @@
 <script>
 $(function(){
 	$("#submit").click(function(){
-		var title=$('#doc-vld-name-2').val();
-		if(title=="" || title==null){
-			alert("请输入权限名称");
-			
-		}else{
-			
+		 var name = $("#doc-vld-name-2").val()
+		 var leavls = [];
+		 $("input[name='level']:checked").each(function(i){
+             leavls[i] =$(this).val();
+        });
+		if(name == null || name == ""){
+			alert('请填写权限名称');
+			return false;
 		}
+		if(leavls == null || leavls == ""){
+			alert("请选择权限");
+			return false;
+		}
+		$.ajax({
+			type:'post',
+			url:"<?php echo U('Admin/Power/power_add');?>",
+			data:{name:name,leavls:leavls},
+			success:function(data){
+				if(data == 1){
+					alert('添加成功');
+					location.reload();
+				}else{
+					alert('出现了一点小的意外...');
+					location.reload();
+				}
+			}
+		})
+		
+		
 	})
 })
 </script>

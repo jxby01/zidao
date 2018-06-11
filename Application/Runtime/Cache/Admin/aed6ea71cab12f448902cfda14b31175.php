@@ -11,9 +11,9 @@
                     <div class="am-btn-toolbar">
                         <div class="am-btn-group am-btn-group-xs">
                             <button type="button" id="add" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
-                            <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>
-                            <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button>
-                            <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
+                            <!-- <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button> -->
+                            <!-- <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button> -->
+                            <!-- <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button> -->
                         </div>
                     </div>
                 </div>
@@ -49,13 +49,13 @@
                                 <td><input type="checkbox" /></td>
                                 <td><?php echo ($vo["id"]); ?></td>
                                 <td><a href="javascript:;"><?php echo ($vo["name"]); ?></a></td>
-                                <td><?php echo ($vo["leavls"]); ?></td>
+                                <td id="pd"><?php echo ($vo["leavls"]); ?></td>
                                 <td class="am-hide-sm-only"><?php echo date('Y年m月d日 H:i',$vo['cre_time']);?></td>
                                 <td>
                                     <div class="am-btn-toolbar">
                                         <div class="am-btn-group am-btn-group-xs">
-                                            <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                                            <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                                            <button class="am-btn am-btn-default am-btn-xs am-text-secondary" onclick="power_edit(<?php echo ($vo["id"]); ?>)"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                                            <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" onclick="power_del(<?php echo ($vo["id"]); ?>)"><span class="am-icon-trash-o"></span> 删除</button>
                                         </div>
                                     </div>
                                 </td>
@@ -85,4 +85,31 @@ $(function(){
 		window.location.href="<?php echo U('Admin/Power/power_add');?>";
 	})
 })
+
+function power_del(id){
+	var pd = $("#pd").text();
+	if(pd == '*'){
+		alert('该操作系统不允许！！');return false;
+	}
+	$.ajax({
+		type:'post',
+		data:{id:id},
+		url:'<?php echo U("Admin/Power/power_del");?>',
+		success:function(data){
+			if(data == 1){
+				alert('删除成功');
+			}else{
+				alert('删除出错....');
+			}
+		}
+	})
+}
+
+function power_edit(id){
+	var pd = $("#pd").text();
+	if(pd == '*'){
+		alert('该操作系统不允许！！');
+		return false;
+	}
+}
 </script>
