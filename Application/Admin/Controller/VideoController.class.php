@@ -62,5 +62,5 @@ class VideoController extends CommonController {
 	    	}
     	}
 	}
->>>>>>> 3415ce6811e345018d4b8509aff77b8684171994
+	
 }
