@@ -46,44 +46,6 @@ class NewsLogicController extends CommonController {
 
     }
     /**
-     * [news_column_add description]
-     * @return [type] [description]
-     * 方法名：增加新闻分类栏目
-     *   过程：
-     *         1、post接收管理员输入内容（添加栏目分类的信息）
-     *         2、处理接收数据，判断数据是否合法
-     *         3、数据入库
-     *         4、返回处理结果
-     */
-    public function news_column_add(){
-
-    }
-    /**
-     * [news_column_eitd description]
-     * @return [type] [description]
-     * 方法名：修改新闻分类栏目
-     *   过程：
-     *         1、post接收管理员啊修改输入信息（修改栏目分类的信息）
-     *         2、处理接收数据，判断数据是否合法
-     *         3、修改数据入库
-     *         4、返回处理结果
-     */
-    public function news_column_eitd(){
-
-    }
-    /**
-     * [news_column_del description]
-     * @return [type] [description]
-     * 方法名：删除新闻分类栏目
-     *   过程：
-     *         1、接收当前分类栏目的id
-     *         2、删除对应id分类栏目
-     *         3、返回处理结果
-     */
-    public function news_column_del(){
-
-    }
-    /**
      * [news_search description]
      * @return [type] [description]
      * 方法名：搜索新闻列表

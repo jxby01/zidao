@@ -40,16 +40,12 @@ class CommonController extends Controller{
 		//如果不被允许，则直接停止程序运行
 			return -1;//返回失败码
 		}else{
-			//创建添加的文件夹和权限
-			// $fl=date("Ymd",time());
-			// mkdir('./Public/upload/user/'.$fl);
-			// chmod('./Public/upload/user/'.$fl,0777);
 			//创建的文件夹路径
-			// $file_path='./Public/upload/user/'.$fl.'/'.time().'.'.$type;
+			$file_path=$file_path.'.'.$type;
 			//保存图片
 			move_uploaded_file($path,$file_path);
-			// return $file_path;//返回保存路径
-			return 'success';//返回成功(二选一)
+			return $file_path;//返回保存路径
+			// return 'success';//返回成功(二选一)
 		}
 	}
 	

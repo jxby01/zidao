@@ -16,6 +16,7 @@ class NewsController extends CommonController {
      *         3、传值，渲染视图模板
      */
     public function news_list(){
+
         $this->view('news_list');
     }
     /**
@@ -27,7 +28,7 @@ class NewsController extends CommonController {
      *         2、用户输入发表内容
      */
     public function news_add(){
-
+        $this->view('news_add');
     }
     /**
      * [mews_eitd description]

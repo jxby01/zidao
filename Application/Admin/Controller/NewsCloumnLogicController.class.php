@@ -1,45 +1,73 @@
 <?php
 namespace Admin\Controller;
 use Think\Controller;
-class NewsController extends CommonController {
+class NewsCloumnLogicController extends CommonController {
     /**
-     * 新闻管理视图层控制器
-     * 渲染所有新闻视图层
+     * 新闻分类栏目逻辑处理管理层控制器
+     * 处理所有数据交换逻辑层
      */
-
+    
     /**
-     * [news_list description]
+     * [cloumn_list description]
      * @return [type] [description]
-     * 方法名：新闻列表视图层
-     *   过程：1、查询新闻表数据库
-     *         2、获取新闻列表数据
-     *         3、传值，渲染视图模板
+     * 方法名：新闻分类栏目
+     *   过程：
+     *         1、查询所有新闻分类栏目
+     *         2、返回所有查询数据
      */
-    public function news_list(){
-        $this->view('news_list');
+    public function cloumn_list(){
+        $cloumn=M('news_cloumn')->where(array('state'=>1))->select();
+        return $cloumn;
     }
     /**
-     * [news_add description]
+     * [cloumn_add description]
      * @return [type] [description]
-     * 方法名：添加新闻
+     * 方法名：添加新闻分类栏目
      *   过程：
-     *         1、渲染添加新闻页面
-     *         2、用户输入发表内容
+     *         1、post接收管理员输入内容数据
+     *         2、处理接收数据，判断数据是否合法
+     *         3、数据入库
+     *         4、返回处理结果
      */
-    public function news_add(){
+    public function cloumn_add(){
+            $file = $_FILES['img'];
+            $date['name']=$_POST['name'];
+            $date['starttime']=time();
+            //创建添加的文件夹和权限
+            $fl=date("Ymd",time());
+            mkdir('./Public/upload/news/'.$fl);
+            chmod('./Public/upload/news/'.$fl,0777);
+            //创建的文件夹路径
+            $file_path='./Public/upload/news/'.$fl.'/'.time();
+            $rtn = $this->upload($file['tmp_name'],$file_path,$file['name']);
+            $date['img']=$rtn;
+            M('news_cloumn')->add($date);
+            $this->success('添加成功',U("NewsCloumn/cloumn_add"),2);
+            
+    }
+    /**
+     * [cloumn_eitd description]
+     * @return [type] [description]
+     * 方法名：修改新闻分类栏目
+     *   过程：
+     *         1、接收管理员修改数据信息
+     *         2、处理接收数据，判断数据是否合法
+     *         3、数据入库
+     *         4、返回处理结果
+     */
+    public function cloumn_eitd(){
 
     }
     /**
-     * [mews_eitd description]
+     * [cloumn_del description]
      * @return [type] [description]
-     * 方法名：新闻修改页面
+     * 方法名：删除新闻分类栏目
      *   过程：
-     *         1、get获取当期修改新闻id
-     *         2、根据id查询当期新闻信息
-     *         3、传值、渲染当前新闻信息在视图
-     *         4、用户修改需要修改内容
+     *         1、get接收删除的id
+     *         2、删除该id对应的数据
+     *         3、返回处理结果
      */
-    public function news_eitd(){
+    public function cloumn_del(){
 
     }
 }

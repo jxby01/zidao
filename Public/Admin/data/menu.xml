@@ -47,5 +47,15 @@
 			<en>catelist</en>
 			<link><![CDATA[News/news_add]]></link>
 		</controller>
+		<controller>
+			<name id="10">新闻分类</name>
+			<en>catelist</en>
+			<link><![CDATA[NewsCloumn/cloumn_list]]></link>
+		</controller>
+		<controller>
+			<name id="11">增加分类</name>
+			<en>catelist</en>
+			<link><![CDATA[NewsCloumn/cloumn_add]]></link>
+		</controller>
 	</module>
 </menu>
