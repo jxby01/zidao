@@ -2,6 +2,11 @@
 namespace Admin\Controller;
 use Think\Controller;
 class VideoController extends CommonController {
+<<<<<<< HEAD
+    public function index(){
+       $this->view('index/index');
+    }
+=======
     public function video(){
     	$video = M('video')->select();
     	$this->assign('video',$video);
@@ -57,4 +62,5 @@ class VideoController extends CommonController {
 	    	}
     	}
 	}
+	
 }
