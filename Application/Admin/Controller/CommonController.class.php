@@ -52,5 +52,6 @@ class CommonController extends Controller{
 			return 'success';//返回成功(二选一)
 		}
 	}
+	
 }
 ?>
