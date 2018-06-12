@@ -81,43 +81,17 @@
 	                    <!-- End User -->
 	            
 						 <ul class="am-list admin-sidebar-list">
-						    <li><a href="index.html"><span class="am-icon-home"></span> 首页</a></li>
+						    <li><a href="{:U('Admin/Index/index')}"><span class="am-icon-home"></span> 首页</a></li>
+							<?php foreach($menu->module as $t):?>
 						    <li class="admin-parent">
-						      <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-table"></span> 表格 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-						      <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav1">
-						        <li><a href="html/table_basic.html" class="am-cf"> 基本表格</span></a></li>
-						        <li><a href="html/table_complete.html">完整表格</a></li>
+						      <a class="am-cf" data-am-collapse="{target: '#<?php echo $t->target?>'}"><span class="<?php echo $t->icon?>"></span> <?php echo $t->name?> <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+						      <ul class="am-list am-collapse admin-sidebar-sub" id="<?php echo $t->target?>">
+							  <?php foreach($t->controller as $k):?>
+						        <li><a href="__MODULE__/<?php echo $k->link?>" class="am-cf"> <?php echo $k->name?></span></a></li>
+							  <?php endforeach;?>
 						      </ul>
 						    </li>
-						    <li class="admin-parent">
-						      <a class="am-cf" data-am-collapse="{target: '#collapse-nav6'}"><span class="am-icon-file-video-o"></span> 视频 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-						      <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav6">
-						        <li><a href="{:U('Admin/video/video')}" class="am-cf">视频列表</span></a></li>
-						        <li><a href="{:U('Admin/video/video_fenl')}">视频分类列表</a></li>
-						      </ul>
-						    </li>
-							 <li class="admin-parent">
-						      <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-power-off"></span> 权限 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-						      <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav4">
-						        <li><a href="{:U('Admin/Power/power_list')}" class="am-cf">权限列表</span></a></li>
-						        <li><a href="{:U('Admin/Power/admin_list')}">管理员列表</a></li>
-						      </ul>
-						    </li>
-						    <li class="admin-parent">
-						      <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><i class="am-icon-line-chart" aria-hidden="true"></i> 统计图表 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-						      <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
-						        <li><a href="html/chart_line.html" class="am-cf"> 折线图</span></a></li>
-						        <li><a href="html/chart_columnar.html" class="am-cf"> 柱状图</span></a></li>
-						        <li><a href="html/chart_pie.html" class="am-cf"> 饼状图</span></a></li>
-						      </ul>
-						    </li>
-						    <li class="admin-parent">
-						      <a class="am-cf" data-am-collapse="{target: '#collapse-nav5'}"><span class="am-icon-file"></span> 表单 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-						      <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav5">
-						        <li><a href="html/form_basic.html" class="am-cf"> 基本表单</a></li>
-						        <li><a href="html/form_validate.html">表单验证</a></li>   
-						      </ul>
-						    </li>
+							<?php endforeach;?>
 						  </ul>
 				</div>
 				  </div>

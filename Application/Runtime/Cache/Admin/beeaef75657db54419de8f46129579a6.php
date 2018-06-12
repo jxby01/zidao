@@ -1,4 +1,4 @@
-	<!--	<div class="am-g">-->
+<?php if (!defined('THINK_PATH')) exit();?>	<!--	<div class="am-g">-->
 		<!-- ============================================================== -->
 		<!-- Start right Content here -->
 		<div class="content-page">
@@ -41,7 +41,7 @@
 		<!-- end right Content here -->
 		<!--</div>-->
 		</div>
-<script type="text/javascript" src="__PUBLIC__/Admin/assetsl/js/jquery-2.1.0.js" ></script>
+<script type="text/javascript" src="/Public/Admin/assetsl/js/jquery-2.1.0.js" ></script>
 <script>
 $(function(){
 	$("#submit").click(function(){
@@ -60,7 +60,7 @@ $(function(){
 		}
 		$.ajax({
 			type:'post',
-			url:"{:U('Admin/Power/power_add')}",
+			url:"<?php echo U('Admin/Power/power_add');?>",
 			data:{name:name,leavls:leavls},
 			success:function(data){
 				if(data == 1){
