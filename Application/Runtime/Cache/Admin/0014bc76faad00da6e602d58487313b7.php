@@ -16,8 +16,12 @@
 								    </div>
 									<div class="am-form-group">
 								      <label for="doc-vld-name-2">视频文件：</label>
-								      <input type="file" class="spwenjian" value="<?php echo ($video["vido_url"]); ?>" name='photo' id="doc-vld-name-2" />
+								      <input type="file" class="spwenjian" value="" name='photo' id="doc-vld-name-2" />
+								      <input type="hidden" name="photos" id="photos" value="<?php echo ($video["vido_url"]); ?>" />
 								    </div>
+								    <video style="display: none;" id="video_u" width="320" height="240" controls autoplay>
+									  <source src="/<?php echo ($video["vido_url"]); ?>" type="video/mp4">
+									</video>
 								    <div class="am-form-group">
 								      <label for="doc-vld-email-2">视频描述：</label>
 								      <textarea style="width:100%;height:100px;" class="spmiaoshu" name="describe" placeholder="输入视频描述"><?php echo ($video["describe"]); ?></textarea>
@@ -29,8 +33,14 @@
 						</div>
 					<!-- Row end -->
 				</div>
-
-			
-			
+				<script type="text/javascript" src="/Public/Admin/assetsl/js/jquery-2.1.0.js" ></script>
+				<script type="text/javascript">
+					$(function(){
+						var vi = $('#vi').val();
+						if(vi==2){
+							$('#video_u').attr('style','display: block;');
+						}
+					})
+				</script>
 			</div>
 		</div>

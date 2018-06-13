@@ -1,4 +1,4 @@
-<div class="content-page">
+<?php if (!defined('THINK_PATH')) exit();?><div class="content-page">
 			<!-- Start content -->
 			<div class="content">
 				<div class="card-box">
@@ -8,7 +8,7 @@
 				          <div class="am-btn-toolbar">
 				            <div class="am-btn-group am-btn-group-xs">
 				            	 <span style="float: left;margin: 0 1em;font-weight: bold;">视频分类列表</span>
-				              <button type="button" class="am-btn am-btn-default"><a href="{:U('Admin/Video/add_videofenl?vi=1')}" style="color: #000;"><span class="am-icon-plus"></span> 新增</a></button>
+				              <button type="button" class="am-btn am-btn-default"><a href="<?php echo U('Admin/Video/add_videofenl?vi=1');?>" style="color: #000;"><span class="am-icon-plus"></span> 新增</a></button>
 				              <!--<button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>-->
 				              
 				            </div>
@@ -41,35 +41,30 @@
               </tr>
               </thead>
               <tbody>
-             	<foreach name="video" item="v">
-	              <tr>
+             	<?php if(is_array($video)): foreach($video as $key=>$v): ?><tr>
 	                <!--<td><input type="checkbox" /></td>--> 
-	                <td>{$v.id}</td>
-	                <td>{$v.title}</td>
-	                <td class="am-hide-sm-only">{$v.describe}</td>
+	                <td><?php echo ($v["id"]); ?></td>
+	                <td><?php echo ($v["title"]); ?></td>
+	                <td class="am-hide-sm-only"><?php echo ($v["describe"]); ?></td>
 	                <td>
 	                  <div class="am-btn-toolbar">
 	                    <div class="am-btn-group am-btn-group-xs">
-	                      <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><a href="{:U('Admin/Video/add_videofenl?vi=2&vid='.$v['id'])}"><span class="am-icon-pencil-square-o"></span> 编辑</a></button>
-	                      <div style="background-color: #fff;" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only shanc" data-id="{$v.id}"><span class="am-icon-trash-o"></span> 删除</div>
+	                      <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><a href="<?php echo U('Admin/Video/add_videofenl?vi=2&vid='.$v['id']);?>"><span class="am-icon-pencil-square-o"></span> 编辑</a></button>
+	                      <div style="background-color: #fff;" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only shanc" data-id="<?php echo ($v["id"]); ?>"><span class="am-icon-trash-o"></span> 删除</div>
 	                    </div>
 	                  </div>
 	                </td>
-	              </tr>
-              	</foreach>
+	              </tr><?php endforeach; endif; ?>
               </tbody>
             </table>
             <div class="am-cf">
-              共 {$num} 条记录
+              共 <?php echo ($num); ?> 条记录
               <div class="am-fr">
               	
                 <ul class="am-pagination">
                   <li class="am-disabled"><a href="#">«</a></li>
                   <li class="am-active"><a href="#">1</a></li>
                   <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
                   <li><a href="#">»</a></li>
                 </ul>
                 
@@ -83,8 +78,8 @@
 					  <!-- Row end -->
 					  
 					</div>
-				<script type="text/javascript" src="__PUBLIC__/Admin/assetsl/js/jquery-2.1.0.js" ></script>
-				<script type="text/javascript" src="__PUBLIC__/Admin/assetsl/js/layer/layer.js" ></script>
+				<script type="text/javascript" src="/Public/Admin/assetsl/js/jquery-2.1.0.js" ></script>
+				<script type="text/javascript" src="/Public/Admin/assetsl/js/layer/layer.js" ></script>
 				<script type="text/javascript">
 					$('.shanc').click(function(){
 						var id = $(this).attr('data-id');
@@ -92,7 +87,7 @@
 						  btn: ['确定','取消'] //按钮
 						}, function(){
 							$.ajax({
-					            url:"{:U('Admin/Video/shancspfl')}",
+					            url:"<?php echo U('Admin/Video/shancspfl');?>",
 					            type:"post",
 					            data:{
 					            	id:id
