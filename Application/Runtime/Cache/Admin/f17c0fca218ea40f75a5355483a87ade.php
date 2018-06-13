@@ -38,14 +38,14 @@
             <table class="am-table am-table-striped am-table-hover table-main">
               <thead>
               <tr>
-                <th class="table-check"><input type="checkbox" /></th><th class="table-id">ID</th><th class="table-title">标题</th><th class="table-type">类别</th><th class="table-author am-hide-sm-only">作者</th><th class="table-date am-hide-sm-only">修改日期</th><th class="table-set">操作</th>
+                <th class="table-check"><input type="checkbox" /></th><th class="table-id">ID</th><th class="table-title">栏目名称</th><th class="table-type">权重</th><th class="table-author am-hide-sm-only">操作者</th><th class="table-date am-hide-sm-only">修改日期</th><th class="table-set">操作</th>
               </tr>
               </thead>
               <?php if(is_array($cloumn_list)): foreach($cloumn_list as $key=>$val): ?><tr>
                 <td><input type="checkbox" /></td>
                 <td><?php echo ($val['news_cloumn_id']); ?></td>
-                <td><a href="#"><?php echo ($val['name']); ?></a></td>
-                <td>default</td>
+                <td><?php echo ($val['name']); ?></td>
+                <td><input style="max-width: 25px;max-height: 25px;" type="text" width="" /></td>
                 <td class="am-hide-sm-only">测试1号</td>
                 <td class="am-hide-sm-only"><?php echo date("Y-m-d H:i:s",$val['starttime']);?></td>
                 <td>

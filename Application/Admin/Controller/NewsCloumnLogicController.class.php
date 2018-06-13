@@ -17,6 +17,9 @@ class NewsCloumnLogicController extends CommonController {
      */
     public function cloumn_list(){
         $cloumn=M('news_cloumn')->where(array('state'=>1))->select();
+        foreach ($cloumn as $key => $value) {
+            
+        }
         return $cloumn;
     }
     /**
