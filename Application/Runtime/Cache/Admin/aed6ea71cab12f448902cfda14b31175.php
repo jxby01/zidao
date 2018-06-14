@@ -10,6 +10,7 @@
                 <div class="am-u-sm-12 am-u-md-6">
                     <div class="am-btn-toolbar">
                         <div class="am-btn-group am-btn-group-xs">
+                            <legend>权限列表</legend>
                             <button type="button" id="add" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
                             <!-- <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button> -->
                             <!-- <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button> -->
@@ -112,7 +113,7 @@ function power_edit(id){
 		alert('该操作系统不允许！！');
 		return false;
 	}else{
-        window.location.href="<?php echo U('Admin/Power/power_edit',array('id'=>$vo['id']));?>";
+        window.location.href="<?php echo U('Admin/Power/power_edit');?>?id="+id;
     }
 }
 </script>

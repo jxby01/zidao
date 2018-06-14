@@ -39,6 +39,7 @@
 			</div>
 		</div>
 <script type="text/javascript" src="/Public/Admin/assetsl/js/jquery-2.1.0.js" ></script>
+<script type="text/javascript" src="/Public/Admin/assetsl/js/layer/layer.js" ></script>
 <script>
 	$(function () {
 	    $('#doc-vld-name-2').blur(function () {
@@ -49,8 +50,16 @@
                 url:'<?php echo U("Admin/Power/if_admin_be");?>',
                 success:function (data) {
                     if(data == 1){
+                        layer.tips('管理员重名', '#doc-vld-name-2', {
+                            tips: 3
+                        });
                         $('#submit').attr("disabled","disabled");
-                    }
+                    }else{
+                        layer.tips('管理员可用', '#doc-vld-name-2', {
+                            tips: 3
+                        });
+                        $('#submit').attr("disabled",false);
+					}
                 }
             })
         })
@@ -59,6 +68,18 @@
             var admin = $('#doc-vld-name-2').val();
             var password = $('#doc-vld-name-3').val();
             var leavl = $("#doc-select-1").val();
+            if(admin == null || admin == ''){
+                alert('请管理账号或用户名');
+                return false;
+            }
+            if(password == null || password == ''){
+                alert('请设置密码');
+                return false;
+			}
+            if(leavl == 0){
+                alert('选择一项权限');
+                return false;
+            }
             $.ajax({
                 type:'post',
                 data:{admin:admin,leavl:leavl,password:password},
