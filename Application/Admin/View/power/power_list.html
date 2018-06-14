@@ -55,8 +55,8 @@
                                 <td>
                                     <div class="am-btn-toolbar">
                                         <div class="am-btn-group am-btn-group-xs">
-                                            <button class="am-btn am-btn-default am-btn-xs am-text-secondary" onclick="power_edit({$vo.id})"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                                            <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" onclick="power_del({$vo.id})"><span class="am-icon-trash-o"></span> 删除</button>
+                                            <div class="am-btn am-btn-default am-btn-xs am-text-secondary" onclick="power_edit({$vo.id})"><span class="am-icon-pencil-square-o"></span> 编辑</div>
+                                            <div class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" onclick="power_del({$vo.id})"><span class="am-icon-trash-o"></span> 删除</div>
                                         </div>
                                     </div>
                                 </td>
@@ -89,29 +89,32 @@ $(function(){
 })
 
 function power_del(id){
-	var pd = $("#pd").text();
-	if(pd == '*'){
+
+	if(id == 3){
 		alert('该操作系统不允许！！');return false;
-	}
-	$.ajax({
-		type:'post',
-		data:{id:id},
-		url:'{:U("Admin/Power/power_del")}',
-		success:function(data){
-			if(data == 1){
-				alert('删除成功');
-			}else{
-				alert('删除出错....');
-			}
-		}
-	})
+	}else{
+        $.ajax({
+            type:'post',
+            data:{id:id},
+            url:'{:U("Admin/Power/power_del")}',
+            success:function(data){
+                if(data == 1){
+                    alert('删除成功');
+                }else{
+                    alert('删除出错....');
+                }
+            }
+        })
+    }
+
 }
 
 function power_edit(id){
-	var pd = $("#pd").text();
-	if(pd == '*'){
+	if(id == 3){
 		alert('该操作系统不允许！！');
 		return false;
-	}
+	}else{
+        window.location.href="http://www.baidu.com";
+    }
 }
 </script>
