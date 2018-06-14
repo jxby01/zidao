@@ -56,11 +56,11 @@ class PowerController extends CommonController{
 			$row = M('leavl')->where(array('id'=>$id))->find();
 			$this->assign('row',$row);
 			$this->assign('cow',json_decode($row['leavls']));
-			$this->view('power/power_add');
+			$this->view('power/power_edit');
 		}
 	}
 	
-	public function admin_list(){
+	public function admin_list(){//管理员列表
 		$admin = M('admin'); // 实例化User对象
 		$count = $admin->count();// 查询满足要求的总记录数
 		$Page = new \Think\Page($count,5);// 实例化分页类 传入总记录数和每页显示的记录数(25)
@@ -74,24 +74,32 @@ class PowerController extends CommonController{
 		$this->view('power/admin_list');
 	}
 	
-	public function admin_add(){
+	public function admin_add(){//管理员添加
 		if(!empty($_POST)){
-			if($_POST['powers'] == 0){
-				echo 0;exit;
-			}else{
-				$data['admin_name']=$_POST['admin_name'];
-				$data['level_id']=$_POST['powers'];
+				$data['admin_name']=$_POST['admin'];
+				$data['admin_password']=sha1($_POST['password']);
+				$data['level_id']=$_POST['leavl'];
 				$data['create_time']=time();
 				if(M('admin')->add($data)){
 					echo 1;
 				}
-			}
 		}else{
 			$powers = M("leavl")->select();
 			$this->assign('powers',$powers);
 			$this->view('power/admin_add');
 		}
 	}
+	/**
+     * 判断管理员是否重名
+     */
+	public function if_admin_be(){
+        if(!empty($_POST)){
+            $admin = $_POST['admin'];
+            if(M('admin')->where(array('admin_name'=>$admin))->find()){
+                echo 1;
+            }
+        }
+    }
 }
 
 ?>

@@ -54,13 +54,8 @@
                                 <td>
                                     <div class="am-btn-toolbar">
                                         <div class="am-btn-group am-btn-group-xs">
-<<<<<<< HEAD
                                             <div class="am-btn am-btn-default am-btn-xs am-text-secondary" onclick="power_edit(<?php echo ($vo["id"]); ?>)"><span class="am-icon-pencil-square-o"></span> 编辑</div>
                                             <div class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" onclick="power_del(<?php echo ($vo["id"]); ?>)"><span class="am-icon-trash-o"></span> 删除</div>
-=======
-                                            <button class="am-btn am-btn-default am-btn-xs am-text-secondary" onclick="power_edit(<?php echo ($vo["id"]); ?>)"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                                            <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" onclick="power_del(<?php echo ($vo["id"]); ?>)"><span class="am-icon-trash-o"></span> 删除</button>
->>>>>>> bbd866d40dbbce240de510ba096ea7b1bcd1559b
                                         </div>
                                     </div>
                                 </td>
@@ -117,7 +112,7 @@ function power_edit(id){
 		alert('该操作系统不允许！！');
 		return false;
 	}else{
-        window.location.href="http://www.baidu.com";
+        window.location.href="<?php echo U('Admin/Power/power_edit',array('id'=>$vo['id']));?>";
     }
 }
 </script>
