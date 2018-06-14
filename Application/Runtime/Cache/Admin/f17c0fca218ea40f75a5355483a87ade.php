@@ -34,7 +34,7 @@
 					  <!-- Row start -->
 					  	<div class="am-g">
         <div class="am-u-sm-12">
-          <form class="am-form">
+          <!-- <form class="am-form"> -->
             <table class="am-table am-table-striped am-table-hover table-main">
               <thead>
               <tr>
@@ -45,13 +45,13 @@
                 <td><input type="checkbox" /></td>
                 <td><?php echo ($val['news_cloumn_id']); ?></td>
                 <td><?php echo ($val['name']); ?></td>
-                <td><input style="max-width: 25px;max-height: 25px;" type="text" width="" /></td>
-                <td class="am-hide-sm-only">测试1号</td>
+                <td><input style="max-width: 60px;max-height: 26px;" value="<?php echo ($val['sort']); ?>" type="number" width="" /></td>
+                <td class="am-hide-sm-only"><?php echo ($val['admin_name']); ?></td>
                 <td class="am-hide-sm-only"><?php echo date("Y-m-d H:i:s",$val['starttime']);?></td>
                 <td>
                   <div class="am-btn-toolbar">
                     <div class="am-btn-group am-btn-group-xs">
-                      <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                      <a href="<?php echo U('NewsCloumn/cloumn_eitd');?>?news_cloumn_id=<?php echo ($val['news_cloumn_id']); ?>"><button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button></a>
                       <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 复制</button>
                       <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
                     </div>
@@ -61,22 +61,14 @@
               </tbody>
             </table>
             <div class="am-cf">
-              共 15 条记录
+              共 <?php echo ($count); ?> 条记录
               <div class="am-fr">
-                <ul class="am-pagination">
-                  <li class="am-disabled"><a href="#">«</a></li>
-                  <li class="am-active"><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                  <li><a href="#">»</a></li>
-                </ul>
+                <?php echo ($page); ?>
               </div>
             </div>
             <hr />
             <p>注：.....</p>
-          </form>
+          <!-- </form> -->
         </div>
 
       </div>
