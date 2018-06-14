@@ -81,9 +81,10 @@
 	                    <!-- End User -->
 	            
 						 <ul class="am-list admin-sidebar-list">
-						    <li><a href="{:U('Admin/Index/index')}"><span class="am-icon-home"></span> 首页</a></li>
+						    <li style="display: none"><a href="{:U('Admin/Index/index')}"><span class="am-icon-home"></span> 首页</a></li>
 							<?php foreach($menu->module as $t):?>
-						    <li class="admin-parent">
+							 <?php if($_SESSION['leavls'] == '*'){ ?>
+							 <li class="admin-parent">
 						      <a class="am-cf" data-am-collapse="{target: '#<?php echo $t->target?>'}"><span class="<?php echo $t->icon?>"></span> <?php echo $t->name?> <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
 						      <ul class="am-list am-collapse admin-sidebar-sub" id="<?php echo $t->target?>">
 							  <?php foreach($t->controller as $k):?>
@@ -91,6 +92,18 @@
 							  <?php endforeach;?>
 						      </ul>
 						    </li>
+							 <?php }else if(in_array($t->name->attributes()->id,$_SESSION['leavls'])){ ?>
+							 <li class="admin-parent">
+								 <a class="am-cf" data-am-collapse="{target: '#<?php echo $t->target?>'}"><span class="<?php echo $t->icon?>"></span> <?php echo $t->name?> <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+								 <ul class="am-list am-collapse admin-sidebar-sub" id="<?php echo $t->target?>">
+									 <?php foreach($t->controller as $k):?>
+									 <?php if(in_array($k->name->attributes()->id,$_SESSION['leavls'])){ ?>
+						<li><a href="__MODULE__/<?php echo $k->link?>" class="am-cf"> <?php echo $k->name?></span></a></li>
+									 <?php }?>
+									 <?php endforeach;?>
+								 </ul>
+							 </li>
+							 <?php }?>
 							<?php endforeach;?>
 						  </ul>
 				</div>

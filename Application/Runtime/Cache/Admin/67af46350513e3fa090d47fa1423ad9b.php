@@ -1,4 +1,4 @@
-<!--	<div class="am-g">-->
+<?php if (!defined('THINK_PATH')) exit();?><!--	<div class="am-g">-->
 <!-- ============================================================== -->
 <!-- Start right Content here -->
 <div class="content-page">
@@ -13,16 +13,14 @@
                             <legend>修改管理员信息</legend>
                             <div class="am-form-group">
                                 <label for="doc-vld-name-2">管理员账号/名称：</label>
-                                <input type="hidden" value="{$row.admin_id}" id="admin_id">
-                                <input type="text" disabled="disabled" id="doc-vld-name-2" name="admin_name" value="{$row.admin_name}" required/>
+                                <input type="hidden" value="<?php echo ($row["admin_id"]); ?>" id="admin_id">
+                                <input type="text" disabled="disabled" id="doc-vld-name-2" name="admin_name" value="<?php echo ($row["admin_name"]); ?>" required/>
                             </div>
                             <div class="am-form-group">
                                 <label for="doc-select-1">选择权限</label>
                                 <select id="doc-select-1" required>
                                     <option value="0" name="powers">-=请选择一项权限添加=-</option>
-                                    <foreach name="powers" item="k">
-                                        <option <?php if($k['id'] == $row['level_id']){echo 'selected';}?> value="{$k.id}">{$k.name}</option>
-                                    </foreach>
+                                    <?php if(is_array($powers)): foreach($powers as $key=>$k): ?><option <?php if($k['id'] == $row['level_id']){echo 'selected';}?> value="<?php echo ($k["id"]); ?>"><?php echo ($k["name"]); ?></option><?php endforeach; endif; ?>
                                 </select>
                                 <span class="am-form-caret"></span>
                             </div>
@@ -37,8 +35,8 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="__PUBLIC__/Admin/assetsl/js/jquery-2.1.0.js" ></script>
-<script type="text/javascript" src="__PUBLIC__/Admin/assetsl/js/layer/layer.js" ></script>
+<script type="text/javascript" src="/Public/Admin/assetsl/js/jquery-2.1.0.js" ></script>
+<script type="text/javascript" src="/Public/Admin/assetsl/js/layer/layer.js" ></script>
 <script>
     $(function () {
         $('#submit').click(function(){
@@ -51,7 +49,7 @@
             $.ajax({
                 type:'post',
                 data:{leavl:leavl,id:id},
-                url:'{:U("Admin/Power/admin_eidt")}',
+                url:'<?php echo U("Admin/Power/admin_eidt");?>',
                 success:function (e) {
                     if(e == 1){
                         alert('权限重置成功');
