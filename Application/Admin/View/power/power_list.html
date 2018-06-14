@@ -114,7 +114,7 @@ function power_edit(id){
 		alert('该操作系统不允许！！');
 		return false;
 	}else{
-        window.location.href="http://www.baidu.com";
+        window.location.href="{:U('Admin/Power/power_edit',array('id'=>$vo['id']))}";
     }
 }
 </script>

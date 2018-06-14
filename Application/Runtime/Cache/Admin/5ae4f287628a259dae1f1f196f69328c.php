@@ -1,4 +1,4 @@
-	<!--	<div class="am-g">-->
+<?php if (!defined('THINK_PATH')) exit();?>	<!--	<div class="am-g">-->
 		<!-- ============================================================== -->
 		<!-- Start right Content here -->
 		<div class="content-page">
@@ -13,13 +13,13 @@
 								    <legend>修改权限信息</legend>
 								    <div class="am-form-group">
 								      <label for="doc-vld-name-2">权限名称：</label>
-								      <input type="text" id="doc-vld-name-2" name="name"  minlength="3" value="{$row['name']}" required/>
+								      <input type="text" id="doc-vld-name-2" name="name"  minlength="3" value="<?php echo ($row['name']); ?>" required/>
 								    </div>
 								    <div class="am-form-group">
 								      <label class="am-form-label">权限：</label><br />
 									  <?php foreach($menu->module as $t):?>
 									   <label class="am-checkbox-inline">
-										   <input type="hidden" id="power_id" value="{$row.id}">
+										   <input type="hidden" id="power_id" value="<?php echo ($row["id"]); ?>">
 								        <input type="checkbox" id="leavls" value="<?php echo $t->name->attributes()->id;?>" name="level" minchecked="1" <?php if(in_array($t->name->attributes()->id,$cow)){echo 'checked="checked"';}?>  required> <strong><?php echo $t->name;?></strong><br />
 								      </label><br />
 									  <?php foreach($t->controller as $k):?>
@@ -42,7 +42,7 @@
 		<!-- end right Content here -->
 		<!--</div>-->
 		</div>
-<script type="text/javascript" src="__PUBLIC__/Admin/assetsl/js/jquery-2.1.0.js" ></script>
+<script type="text/javascript" src="/Public/Admin/assetsl/js/jquery-2.1.0.js" ></script>
 <script>
 $(function(){
 	$("#submit").click(function(){
@@ -62,11 +62,11 @@ $(function(){
 		}
 		$.ajax({
 			type:'post',
-			url:"{:U('Admin/Power/power_edit')}",
+			url:"<?php echo U('Admin/Power/power_edit');?>",
 			data:{name:name,leavls:leavls,id:id},
 			success:function(data){
 				if(data == 1){
-					alert('修改成功');
+					alert('添加成功');
 					location.reload();
 				}else{
 					alert('出现了一点小的意外...');
