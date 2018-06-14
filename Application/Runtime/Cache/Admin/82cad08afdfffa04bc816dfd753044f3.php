@@ -16,7 +16,7 @@
 								<div class="am-g">
 									<div class="am-u-md-6">
 										<form class="am-form am-text-sm" action="<?php echo U('NewsCloumnLogic/cloumn_eitd');?>" method="post" enctype="multipart/form-data">
-											<input type="hidden" value="<?php echo ($row['news_cloumn_id']); ?>" name="id">
+											<input type="hidden" value="<?php echo ($row['news_cloumn_id']); ?>" name="news_cloumn_id">
 											<div class="am-form-group">
 												<div class="am-g">
 											      <label class="am-u-md-2 am-md-text-right am-padding-left-0" for="doc-ipt-text-1">栏目名称</label>

@@ -100,6 +100,6 @@ class NewsCloumnLogicController extends CommonController {
      *         3、返回处理结果
      */
     public function cloumn_del(){
-        
+        echo M('news_cloumn')->delete($_POST['news_cloumn_id']);
     }
 }
