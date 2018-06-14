@@ -136,12 +136,20 @@
 				    //批量删除
 				    $('.plshanc').click(function(){
 						var obj=document.getElementsByName('checkname[]'); 
+<<<<<<< HEAD
 						var str=[]; 
 						for(var i=0; i<obj.length; i++){ 
 							if(obj[i].checked) str+=obj[i].value+','; 
 							str = str.substring(0, str.length - 1);
+=======
+						var str=''; 
+						for(var i=0; i<obj.length; i++){ 
+							if(obj[i].checked) str+=obj[i].value+','; 
+							
+>>>>>>> 1b7120373bfa810c995304fd5df056fce38bd714
 						} 
-						if(s==''){
+						str = str.substring(0, str.length - 1);
+						if(str==''){
 							layer.msg('请选择要删除的视频内容！');
 						}else{
 							layer.confirm('是否删除选中视频信息？', {
@@ -156,7 +164,7 @@
 						            success:function(e){
 						            	if(e==1){
 						            		layer.msg('删除成功！', {icon: 1});
-						            		setTimeout(shuax,1000);
+						            		setTimeout(shuax,700);
 						            		function shuax(){
 						            			window.location.reload();
 						            		}

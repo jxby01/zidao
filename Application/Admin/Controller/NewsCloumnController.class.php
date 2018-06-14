@@ -18,8 +18,10 @@ class NewsCloumnController extends CommonController {
      */
     public function cloumn_list(){
         $cloumn      = new NewsCloumnLogicController();
-        $cloumn_list = $cloumn->cloumn_list();
-        $this->assign('cloumn_list',$cloumn_list);
+        $row = $cloumn->cloumn_list();
+        $this->assign('count',$row['count']);
+        $this->assign('page',$row['show']);
+        $this->assign('cloumn_list',$row['cloumn']);
         $this->view('cloumn_list');
     }
     /**
@@ -42,6 +44,8 @@ class NewsCloumnController extends CommonController {
      *         3、传值，渲染视图层信息
      */
     public function cloumn_eitd(){
-
+        $row=M('news_cloumn')->find($_GET['news_cloumn_id']);
+        $this->assign('row',$row);
+        $this->view('cloumn_eitd');
     }
 }
