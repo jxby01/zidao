@@ -53,7 +53,7 @@
                     <div class="am-btn-group am-btn-group-xs">
                       <a href="<?php echo U('NewsCloumn/cloumn_eitd');?>?news_cloumn_id=<?php echo ($val['news_cloumn_id']); ?>"><button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button></a>
                       <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 复制</button>
-                      <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                      <button data-id="<?php echo ($val['news_cloumn_id']); ?>" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only shanc"><span class="am-icon-trash-o"></span> 删除</button>
                     </div>
                   </div>
                 </td>
@@ -99,6 +99,38 @@
 		<script type="text/javascript" src="../assets/js/amazeui.min.js"></script>
 		<script type="text/javascript" src="../assets/js/app.js" ></script>
 		<script type="text/javascript" src="../assets/js/blockUI.js" ></script>
+    <script type="text/javascript" src="/Public/Admin/assetsl/js/jquery-2.1.0.js" ></script>
+    <script type="text/javascript" src="/Public/Admin/assetsl/js/layer/layer.js" ></script>
+    <script type="text/javascript">
+      $('.shanc').click(function(){
+        var id = $(this).attr('data-id');
+        layer.confirm('是否删除该条新闻信息？', {
+          btn: ['确定','取消'] //按钮
+        }, function(){
+          $.ajax({
+                  url:"<?php echo U('NewsCloumnLogic/cloumn_del');?>",
+                  type:"post",
+                  data:{
+                    news_cloumn_id:id
+                  },
+                  success:function(e){
+                    console.log(e)
+                    if(e>0){
+                      layer.msg('删除成功！', {icon: 1});
+                      setTimeout(shuax,1000);
+                      function shuax(){
+                        window.location.reload();
+                      }
+                    }else{
+                      layer.msg('删除失败！', {icon: 1});
+                    }
+                  },
+              });
+        }, function(){
+          
+        });
+      })
+    </script>
 	</body>
 	
 </html>
