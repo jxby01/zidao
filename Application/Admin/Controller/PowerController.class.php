@@ -100,6 +100,52 @@ class PowerController extends CommonController{
             }
         }
     }
+
+    /**
+     * 管理员删除
+     */
+    public function admin_del(){
+        if(!empty($_POST)){
+            $id = $_POST['id'];
+            if(M('admin')->where(array('admin_id'=>$id))->delete()){
+                echo 1;
+            }
+        }
+    }
+
+    /**
+     * 管理员修改
+     */
+    public function admin_edit(){
+        if(!empty($_POST)){
+            $id = $_POST['id'];
+            $data['level_id']=$_POST['leavl'];
+            $data['cre_time'] = time();
+            if(M('admin')->where(array('admin_id'=>$id))->save($data)){
+                echo 1;
+            }else{
+                echo 2;
+            }
+        }else{
+            $id = $_GET['id'];
+            $powers = M("leavl")->select();
+            $row = M('admin')->where(array('admin_id'=>$id))->find();
+            $this->assign('powers',$powers);
+            $this->assign('row',$row);
+            $this->view('power/admin_edit');
+        }
+    }
+
+    /**
+     * 修改个人信息，密码，用户名
+     */
+    public function eidt_profile(){
+        if(!empty($_POST)){
+
+        }else{
+            $this->view('power/eidt_Profile');
+        }
+    }
 }
 
 ?>

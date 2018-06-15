@@ -66,7 +66,7 @@ $(function(){
 			data:{name:name,leavls:leavls,id:id},
 			success:function(data){
 				if(data == 1){
-					alert('添加成功');
+					alert('修改成功');
 					location.reload();
 				}else{
 					alert('出现了一点小的意外...');

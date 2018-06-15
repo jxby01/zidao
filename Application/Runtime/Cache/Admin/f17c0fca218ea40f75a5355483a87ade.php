@@ -34,26 +34,26 @@
 					  <!-- Row start -->
 					  	<div class="am-g">
         <div class="am-u-sm-12">
-          <form class="am-form">
+          <!-- <form class="am-form"> -->
             <table class="am-table am-table-striped am-table-hover table-main">
               <thead>
               <tr>
-                <th class="table-check"><input type="checkbox" /></th><th class="table-id">ID</th><th class="table-title">标题</th><th class="table-type">类别</th><th class="table-author am-hide-sm-only">作者</th><th class="table-date am-hide-sm-only">修改日期</th><th class="table-set">操作</th>
+                <th class="table-check"><input type="checkbox" /></th><th class="table-id">ID</th><th class="table-title">栏目名称</th><th class="table-type">权重</th><th class="table-author am-hide-sm-only">操作者</th><th class="table-date am-hide-sm-only">修改日期</th><th class="table-set">操作</th>
               </tr>
               </thead>
               <?php if(is_array($cloumn_list)): foreach($cloumn_list as $key=>$val): ?><tr>
                 <td><input type="checkbox" /></td>
                 <td><?php echo ($val['news_cloumn_id']); ?></td>
-                <td><a href="#"><?php echo ($val['name']); ?></a></td>
-                <td>default</td>
-                <td class="am-hide-sm-only">测试1号</td>
+                <td><?php echo ($val['name']); ?></td>
+                <td><input style="max-width: 60px;max-height: 26px;" value="<?php echo ($val['sort']); ?>" type="number" width="" /></td>
+                <td class="am-hide-sm-only"><?php echo ($val['admin_name']); ?></td>
                 <td class="am-hide-sm-only"><?php echo date("Y-m-d H:i:s",$val['starttime']);?></td>
                 <td>
                   <div class="am-btn-toolbar">
                     <div class="am-btn-group am-btn-group-xs">
-                      <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                      <a href="<?php echo U('NewsCloumn/cloumn_eitd');?>?news_cloumn_id=<?php echo ($val['news_cloumn_id']); ?>"><button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button></a>
                       <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 复制</button>
-                      <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                      <button data-id="<?php echo ($val['news_cloumn_id']); ?>" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only shanc"><span class="am-icon-trash-o"></span> 删除</button>
                     </div>
                   </div>
                 </td>
@@ -61,22 +61,14 @@
               </tbody>
             </table>
             <div class="am-cf">
-              共 15 条记录
+              共 <?php echo ($count); ?> 条记录
               <div class="am-fr">
-                <ul class="am-pagination">
-                  <li class="am-disabled"><a href="#">«</a></li>
-                  <li class="am-active"><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                  <li><a href="#">»</a></li>
-                </ul>
+                <?php echo ($page); ?>
               </div>
             </div>
             <hr />
             <p>注：.....</p>
-          </form>
+          <!-- </form> -->
         </div>
 
       </div>
@@ -107,6 +99,38 @@
 		<script type="text/javascript" src="../assets/js/amazeui.min.js"></script>
 		<script type="text/javascript" src="../assets/js/app.js" ></script>
 		<script type="text/javascript" src="../assets/js/blockUI.js" ></script>
+    <script type="text/javascript" src="/Public/Admin/assetsl/js/jquery-2.1.0.js" ></script>
+    <script type="text/javascript" src="/Public/Admin/assetsl/js/layer/layer.js" ></script>
+    <script type="text/javascript">
+      $('.shanc').click(function(){
+        var id = $(this).attr('data-id');
+        layer.confirm('是否删除该条新闻信息？', {
+          btn: ['确定','取消'] //按钮
+        }, function(){
+          $.ajax({
+                  url:"<?php echo U('NewsCloumnLogic/cloumn_del');?>",
+                  type:"post",
+                  data:{
+                    news_cloumn_id:id
+                  },
+                  success:function(e){
+                    console.log(e)
+                    if(e>0){
+                      layer.msg('删除成功！', {icon: 1});
+                      setTimeout(shuax,1000);
+                      function shuax(){
+                        window.location.reload();
+                      }
+                    }else{
+                      layer.msg('删除失败！', {icon: 1});
+                    }
+                  },
+              });
+        }, function(){
+          
+        });
+      })
+    </script>
 	</body>
 	
 </html>
