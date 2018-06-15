@@ -48,6 +48,22 @@ class CommonController extends Controller{
 			// return 'success';//返回成功(二选一)
 		}
 	}
+
+    /**
+     * layui上传图片请求接口
+     */
+    public function add_imgs(){
+
+        $upload = new \Think\Upload();// 实例化上传类
+        $upload->maxSize   =     3145728 ;// 设置附件上传大小
+        $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+        $upload->rootPath  = './Public/upload/'; // 设置附件上传根目录
+        $upload->savePath  = 'header/'; // 设置附件上传（子）目录
+        // 上传文件
+        $info   =   $upload->upload();
+        $imgs = 'Uploads/'.$info['file']['savepath'].$info['file']['savename'];
+        exit(json_encode(array("code"=>0,"msg"=>'上传成功','src'=>$imgs)));//返回到JS中进行处理
+    }
 	
 }
 ?>

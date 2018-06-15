@@ -135,6 +135,17 @@ class PowerController extends CommonController{
             $this->view('power/admin_edit');
         }
     }
+
+    /**
+     * 修改个人信息，密码，用户名
+     */
+    public function eidt_profile(){
+        if(!empty($_POST)){
+
+        }else{
+            $this->view('power/eidt_Profile');
+        }
+    }
 }
 
 ?>
