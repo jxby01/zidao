@@ -22,7 +22,7 @@
                                                 </div>
                                                 <input type="hidden" value="<?php echo ($row["admin_id"]); ?>" id="ids">
 												<div class="am-form-group">
-													<label for="doc-ipt-pwd-2">密码</label>
+													<label for="doc-ipt-pwd-2">设置密码</label>
 													<input type="password" class="am-radius" id="doc-ipt-pwd-2" placeholder="设置个密码吧">
 												</div>
 												<div class="am-form-group">
@@ -30,7 +30,7 @@
 													<input type="password" class="am-radius" id="doc-ipt-pwd-3" placeholder="确认密码">
 												</div>
                                                 <div class="am-form-group">
-                                                    <label style="font-size: 12px;color: #BABABA;" for="doc-ipt-pwd-2">注：修改成功后会自动退出，需重新登录</label>
+                                                    <label style="font-size: 12px;color: #BABABA;" for="doc-ipt-pwd-2">注：修改成功后会自动退出，需重新登录...</label>
                                                 </div>
 												<button type="submit" id="submit" class="am-btn am-btn-primary">确认修改</button>
 											</form>
