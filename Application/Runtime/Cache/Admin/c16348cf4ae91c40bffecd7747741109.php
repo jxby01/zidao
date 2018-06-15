@@ -7,7 +7,7 @@
 						<div class="am-u-sm-12 am-u-md-6">
 				          <div class="am-btn-toolbar">
 				            <div class="am-btn-group am-btn-group-xs">
-				            	 <span style="float: left;margin: 0 1em;font-weight: bold;">视频分类列表</span>
+				            	<legend>视频分类列表</legend>
 				              <button type="button" class="am-btn am-btn-default"><a href="<?php echo U('Admin/Video/add_videofenl?vi=1');?>" style="color: #000;"><span class="am-icon-plus"></span> 新增</a></button>
 				              <!--<button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>-->
 				              
@@ -78,12 +78,12 @@
 					            success:function(e){
 					            	if(e==1){
 					            		layer.msg('删除成功！', {icon: 1});
-					            		setTimeout(shuax,1000);
+					            		setTimeout(shuax,500);
 					            		function shuax(){
 					            			window.location.reload();
 					            		}
 					            	}else{
-					            		layer.msg('删除失败！', {icon: 1});
+					            		layer.msg('删除失败！', {icon: 2});
 					            	}
 					            },
 					       	});
