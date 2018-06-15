@@ -136,17 +136,10 @@
 				    //批量删除
 				    $('.plshanc').click(function(){
 						var obj=document.getElementsByName('checkname[]'); 
-<<<<<<< HEAD
-						var str=[]; 
-						for(var i=0; i<obj.length; i++){ 
-							if(obj[i].checked) str+=obj[i].value+','; 
-							str = str.substring(0, str.length - 1);
-=======
 						var str=''; 
 						for(var i=0; i<obj.length; i++){ 
 							if(obj[i].checked) str+=obj[i].value+','; 
 							
->>>>>>> 1b7120373bfa810c995304fd5df056fce38bd714
 						} 
 						str = str.substring(0, str.length - 1);
 						if(str==''){

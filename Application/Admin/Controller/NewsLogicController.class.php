@@ -18,7 +18,35 @@ class NewsLogicController extends CommonController {
      *         4、返回处理结果
      */
     public function news_add(){
-
+        header('Content-Type: text/html; charset=utf-8');
+        $data['title']=$_POST['title'];
+        $data['news_cloumn_id']=$_POST['news_cloumn_id'];
+        $data['content']=$_POST['content'];
+        $file = $_FILES['img'];
+        if($data['title']){
+            if($data['content']){
+                if($file['tmp_name']){
+                    $data['start_time']=time();
+                    //创建添加的文件夹和权限
+                    $fl=date("Ymd",time());
+                    mkdir('./Public/upload/news/'.$fl);
+                    chmod('./Public/upload/news/'.$fl,0777);
+                    //创建的文件夹路径
+                    $file_path='./Public/upload/news/'.$fl.'/'.time();
+                    $rtn = $this->upload($file['tmp_name'],$file_path,$file['name']);
+                    $data['img']=$rtn;
+                    $data['admin_id']=$_SESSION['admin_id'];
+                    M('news')->add($data);
+                    $this->success('添加成功',U("News/news_list"),2);
+                }else{
+                    alert('请上传新闻图片','3000',2);
+                }
+            }else{
+                alert('请输入新闻详情','3000',2);
+            }
+        }else{
+            alert('请输入新闻标题','3000',2);
+        }
     }
     /**
      * [news_eitd description]
@@ -31,7 +59,34 @@ class NewsLogicController extends CommonController {
      *         4、返回处理结果
      */
     public function news_eitd(){
-
+        header('Content-Type: text/html; charset=utf-8');
+        $news_id=$_POST['news_id'];
+        $data['title']=$_POST['title'];
+        $data['news_cloumn_id']=$_POST['news_cloumn_id'];
+        $data['content']=$_POST['content'];
+        $file = $_FILES['img'];
+        if($data['title']){
+            if($data['content']){
+                if($file['tmp_name']){
+                    //创建添加的文件夹和权限
+                    $fl=date("Ymd",time());
+                    mkdir('./Public/upload/news/'.$fl);
+                    chmod('./Public/upload/news/'.$fl,0777);
+                    //创建的文件夹路径
+                    $file_path='./Public/upload/news/'.$fl.'/'.time();
+                    $rtn = $this->upload($file['tmp_name'],$file_path,$file['name']);
+                    $data['img']=$rtn;
+                } 
+                $data['start_time']=time();
+                $data['admin_id']=$_SESSION['admin_id'];
+                M('news')->where(array('news_id'=>$news_id))->save($data);
+                $this->success('修改成功',U("News/news_list"),2);
+            }else{
+                alert('请输入新闻详情','3000',2);
+            }
+        }else{
+            alert('请输入新闻标题','3000',2);
+        }
     }
     /**
      * [news_del description]

@@ -102,4 +102,32 @@ class NewsCloumnLogicController extends CommonController {
     public function cloumn_del(){
         echo M('news_cloumn')->delete($_POST['news_cloumn_id']);
     }
+    /**
+     * [cloumn_alldel description]
+     * @return [type] [description]
+     * 方法名：删除多条信息
+     *   过程：
+     *         1、获取选择的新闻栏目id
+     *         2、删除所有的选择的栏目
+     *         3、返回处理结果
+     */
+    public function cloumn_alldel(){
+        $all_id=$_POST['id'];
+        $whe['news_cloumn_id']=array('in',$all_id);
+        $rtn=M('news_cloumn')->where($whe)->deleteete();
+        echo $rtn;
+    }
+    /**
+     * [cloumn_sort description]
+     * @return [type] [description]
+     * 方法名：权重排序
+     *   过程：
+     */
+    public function cloumn_sort(){
+        $sort=$_POST['data'];
+        foreach ($sort as $key => $value) {
+            M('news_cloumn')->where(array('news_cloumn_id'=>$key))->save(array('sort'=>$value));
+        }
+        echo '操作成功';
+    }
 }
