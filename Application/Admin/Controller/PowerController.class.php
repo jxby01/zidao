@@ -137,12 +137,22 @@ class PowerController extends CommonController{
     }
 
     /**
-     * 修改个人信息，密码，用户名
+     * 修改个人信息，密码
      */
     public function eidt_profile(){
         if(!empty($_POST)){
-
+            $data['admin_password']= sha1($_POST['password']);
+            $data['headerimg'] = $_POST['headerimg'];
+            $id = $_POST['id'];
+            if(M('admin')->where(array('admin_id'=>$id))->save($data)){
+                echo 1;
+            }else{
+                echo 0;
+            }
         }else{
+            $adminname = $_GET['name'];
+            $row = M('admin')->where(array('admin_name'=>$adminname))->find();
+            $this->assign('row',$row);
             $this->view('power/eidt_Profile');
         }
     }

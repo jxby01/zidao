@@ -15,16 +15,12 @@
                                                 <div class="layui-upload">
 
                                                     <div class="layui-upload-list">
-                                                        <img style="width: 84px;height: 84px;margin-bottom: 12px;" class="layui-upload-img" src="/Public/Admin/assetsl/img/headerimg.png" id="demo1">
+                                                        <img style="width: 84px;height: 84px;margin-bottom: 12px;" class="layui-upload-img" src="<?php if($row['headerimg'] == null || $row['headerimg'] == ''){echo '/Public/Admin/assetsl/img/headerimg.png';}else{echo '/'.$row['headerimg'].'';}?>" id="demo1">
                                                         <p></p>
                                                         <button style="font-size: 12px;height: 30px;line-height: 30px;" type="button" class="layui-btn" id="test1">选择图片</button>
                                                     </div>
                                                 </div>
-                                                <div class="am-form-group">
-													<label for="doc-ipt-email-2">用户名</label>
-													<input type="email" class="am-radius" id="doc-ipt-email-2" placeholder="输入用户名">
-												</div>
-
+                                                <input type="hidden" value="<?php echo ($row["admin_id"]); ?>" id="ids">
 												<div class="am-form-group">
 													<label for="doc-ipt-pwd-2">密码</label>
 													<input type="password" class="am-radius" id="doc-ipt-pwd-2" placeholder="设置个密码吧">
@@ -33,7 +29,10 @@
 													<label for="doc-ipt-pwd-2">确认密码</label>
 													<input type="password" class="am-radius" id="doc-ipt-pwd-3" placeholder="确认密码">
 												</div>
-												<button type="submit" class="am-btn am-btn-primary">确认修改</button>
+                                                <div class="am-form-group">
+                                                    <label style="font-size: 12px;color: #BABABA;" for="doc-ipt-pwd-2">注：修改成功后会自动退出，需重新登录</label>
+                                                </div>
+												<button type="submit" id="submit" class="am-btn am-btn-primary">确认修改</button>
 											</form>
 										</div>
 									</div>
@@ -70,7 +69,6 @@
                     return layer.msg('上传失败');
                 }
                 img = res.src;
-                alert(img);
                 //上传成功
             }
             ,error: function(){
@@ -84,38 +82,38 @@
         });
     })
 $(function(){
-	$("#submit").click(function(){
-		 var name = $("#doc-vld-name-2").val();
-		 var id = $("#power_id").val();
-		 var leavls = [];
-		 $("input[name='level']:checked").each(function(i){
-             leavls[i] =$(this).val();
-        });
-		if(name == null || name == ""){
-			alert('请填写权限名称');
-			return false;
-		}
-		if(leavls == null || leavls == ""){
-			alert("请选择权限");
-			return false;
-		}
-		$.ajax({
-			type:'post',
-			url:"<?php echo U('Admin/Power/power_edit');?>",
-			data:{name:name,leavls:leavls,id:id},
-			success:function(data){
-				if(data == 1){
-					alert('修改成功');
-					location.reload();
-				}else{
-					alert('出现了一点小的意外...');
-					location.reload();
-				}
-			}
-		})
-		
-		
-	})
+
+        $("#submit").click(function(){
+             var headerimg = img;
+             var id = $("#ids").val();
+             var password = $("#doc-ipt-pwd-2").val();
+             var sure_password = $("#doc-ipt-pwd-3").val();
+            if(password == null || password == ""){
+                alert("请填写密码");
+                return false;
+            }
+            if(password != sure_password){
+                alert("密码不一致");
+                return false;
+            }
+
+            $.ajax({
+                type:'post',
+                url:"<?php echo U('Admin/Power/eidt_profile');?>",
+                data:{password:password,id:id,headerimg:headerimg},
+                success:function(data){
+                    if(data == 1){
+                        setInterval(layer.msg('修改成功，即将推出，请重新登录'),1500);
+                        window.location.href='<?php echo U("Admin/Login/logout");?>';
+                    }else{
+                        alert('出现了一点小的意外...');
+                        location.reload();
+                    }
+                }
+            })
+
+
+        })
 })
 
 </script>

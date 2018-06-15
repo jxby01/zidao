@@ -33,6 +33,7 @@ class LoginController extends Controller {
 			if(!empty($ruselt)){
 				$_SESSION['admin_name'] = $adminname;
 				$_SESSION['admin_id'] = $ruselt['admin_id'];
+				$_SESSION['headerimg'] = $ruselt['headerimg'];
 				$level = M('leavl')->where(array('id'=>$ruselt['level_id']))->find();
 				if($level['leavls'] == '*'){
                     $_SESSION['leavls'] = $level['leavls'];

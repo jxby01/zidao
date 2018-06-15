@@ -61,7 +61,7 @@ class CommonController extends Controller{
         $upload->savePath  = 'header/'; // 设置附件上传（子）目录
         // 上传文件
         $info   =   $upload->upload();
-        $imgs = 'Uploads/'.$info['file']['savepath'].$info['file']['savename'];
+        $imgs = 'Public/upload/'.$info['file']['savepath'].$info['file']['savename'];
         exit(json_encode(array("code"=>0,"msg"=>'上传成功','src'=>$imgs)));//返回到JS中进行处理
     }
 	
